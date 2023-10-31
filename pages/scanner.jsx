@@ -11,7 +11,7 @@ export default function Qrcode() {
       <div className="w-screen h-screen flex bg-white bg-opacity-50 ">
         <div
           className=" bg-black m-auto"
-          onClick={(e) => {
+          onTouchStartCapture={(e) => {
             e.preventDefault();
             videoRef.current.play();
           }}
