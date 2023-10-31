@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bgcolor {
+  background-color: #e35b29ff;
+}
+
+body {
+  /* background: url(/Stickers.jpeg); */
+  background: url(/back3.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
