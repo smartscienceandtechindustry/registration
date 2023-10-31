@@ -35,9 +35,7 @@ function DownloadPhoto({ user }) {
                 className="bg-white p-2"
                 style={{ transform: "scale(1.2)" }}
               >
-                <QRCodeSVG
-                  value={`https://golf.imc.co.tz/verify/${user.uid}`}
-                />
+                <QRCodeSVG value={user.uid} />
               </span>
             </div>
 
