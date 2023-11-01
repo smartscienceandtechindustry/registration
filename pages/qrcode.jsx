@@ -64,7 +64,7 @@ export default function Page() {
       />
 
       <div className="min-h-screen  mt-60">
-        <div className="mt-20"></div>
+        <div className="mt-20 p-40"></div>
         {!login1 && user && (
           <div style={{ transform: "scale(1.2)" }}>
             <nav className="text-center text-5xl text-white text-bold text-3xl">
