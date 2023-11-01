@@ -15,7 +15,7 @@ export default function Qrcode() {
             e.preventDefault();
             setTimeout(() => {
               videoRef.current.play();
-            }, 2000);
+            }, 5000);
           }}
         >
           <video
