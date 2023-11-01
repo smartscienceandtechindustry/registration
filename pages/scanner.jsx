@@ -11,13 +11,15 @@ export default function Qrcode() {
       <div className="w-screen h-screen flex bg-white bg-opacity-50 ">
         <div
           className=" bg-black m-auto"
-          onClick={(e) => {
+          onTouchStartCapture={(e) => {
             e.preventDefault();
-            videoRef.current.play();
+            setTimeout(() => {
+              videoRef.current.play();
+            }, 2000);
           }}
         >
           <video
-            src="/scan.mp4"
+            src="/scan2.mp4"
             ref={videoRef}
             onEnded={() => {
               socket.emit("message", "message");
