@@ -11,16 +11,16 @@ export default function Page() {
   const router = useRouter();
   const inputRef = useRef();
 
-  // useEffect(() => {
-  //   if (inputRef) {
-  //     inputRef.current.focus();
-  //   }
-  //   setInterval(() => {
-  //     if (inputRef) {
-  //       inputRef.current.focus();
-  //     }
-  //   }, 4000);
-  // }, []);
+  useEffect(() => {
+    if (inputRef) {
+      inputRef.current.focus();
+    }
+    setInterval(() => {
+      if (inputRef) {
+        inputRef.current.focus();
+      }
+    }, 10000);
+  }, []);
 
   function login(id) {
     axios.post("/api/login", { id: id }).then(({ data }) => {
