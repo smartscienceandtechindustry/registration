@@ -11,16 +11,16 @@ export default function Page() {
   const router = useRouter();
   const inputRef = useRef();
 
-  useEffect(() => {
-    if (inputRef) {
-      inputRef.current.focus();
-    }
-    setInterval(() => {
-      if (inputRef) {
-        inputRef.current.focus();
-      }
-    }, 4000);
-  }, []);
+  // useEffect(() => {
+  //   if (inputRef) {
+  //     inputRef.current.focus();
+  //   }
+  //   setInterval(() => {
+  //     if (inputRef) {
+  //       inputRef.current.focus();
+  //     }
+  //   }, 4000);
+  // }, []);
 
   function login(id) {
     axios.post("/api/login", { id: id }).then(({ data }) => {
@@ -60,13 +60,13 @@ export default function Page() {
         )}
       />
 
-      <div className="min-h-screen">
+      <div className="min-h-screen  mt-60">
         {!login1 && user && (
           <>
-            <nav className="text-center text-2xl text-white text-bold text-3xl">
+            <nav className="text-center text-5xl text-white text-bold text-3xl">
               Welcome
             </nav>
-            <div className="text-center mt-10 text-2xl  ">
+            <div className="text-center mt-10 text-5xl  ">
               <span className="">{user.fullName}</span>
             </div>
           </>
@@ -74,14 +74,16 @@ export default function Page() {
 
         {login1 && user && (
           <>
-            <nav className="text-center text-2xl text-white text-bold text-3xl">
+            <nav className="text-center text-5xl text-white text-bold text-3xl">
               you have already scan
             </nav>
-            <div className="text-center mt-10 text-2xl  ">
+            <div className="text-center mt-10 text-5xl  ">
               <span className="">welcome, {user.fullName}</span>
             </div>
           </>
         )}
+
+        {}
       </div>
       <>
         <QrReader

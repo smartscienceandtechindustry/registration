@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 const socket = io("https://link.imc.co.tz/");
 import HeadPoint from "@/components/headpoint";
 export default function Qrcode() {
   const videoRef = useRef();
+  const [state, setState] = useState(false);
+
   useEffect(() => {}, []);
   return (
     <>
