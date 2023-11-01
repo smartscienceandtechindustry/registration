@@ -64,26 +64,27 @@ export default function Page() {
       />
 
       <div className="min-h-screen  mt-60">
+        <div className="mt-20"></div>
         {!login1 && user && (
-          <>
+          <div style={{ transform: "scale(1.2)" }}>
             <nav className="text-center text-5xl text-white text-bold text-3xl">
               Welcome
             </nav>
             <div className="text-center mt-10 text-5xl  ">
               <span className="">{user.fullName}</span>
             </div>
-          </>
+          </div>
         )}
 
         {login1 && user && (
-          <>
+          <div style={{ transform: "scale(1.2)" }}>
             <nav className="text-center text-5xl text-white text-bold text-3xl">
               you have already scanned
             </nav>
             <div className="text-center mt-10 text-5xl  ">
               <span className="">welcome, {user.fullName}</span>
             </div>
-          </>
+          </div>
         )}
 
         {!user && (
