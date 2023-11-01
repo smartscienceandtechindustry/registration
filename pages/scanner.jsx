@@ -22,6 +22,7 @@ export default function Qrcode() {
             onEnded={() => {
               socket.emit("message", "message");
             }}
+            preload="auto"
           ></video>
         </div>
       </div>

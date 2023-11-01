@@ -7,15 +7,32 @@ export default async function handler(req, res) {
   const users = db.collection("users");
   const id = req.body.id;
 
-  const dbUser1 = await users.findOne({ _id: new ObjectId(id) });
+  console.log("user");
+  try {
+    const dbUser1 = await users.findOne({ _id: new ObjectId(id) });
+    if (dbUser1) {
+      if (dbUser1.sign) {
+        res.status(200).json({ status: true, login: true, user: dbUser1 });
+        console.log("sign");
+      } else {
+        try {
+          const dbUser = await users.updateOne(
+            { _id: new ObjectId(id) },
+            { $set: { sign: true } }
+          );
+          console.log("sign out");
 
-  if (dbUser1) {
-    const dbUser = await users.updateOne(
-      { _id: new ObjectId(id) },
-      { $set: { sign: true } }
-    );
-
-    res.status(200).json({ status: true, user: dbUser1 });
+          res.status(200).json({ status: true, login: false, user: dbUser1 });
+        } catch {
+        } finally {
+          res.status(200).json({ status: false });
+        }
+      }
+    } else {
+      res.status(200).json({ status: false });
+    }
+  } catch {
+  } finally {
+    res.status(200).json({ status: false });
   }
-  res.status(200).json({ status: false });
 }

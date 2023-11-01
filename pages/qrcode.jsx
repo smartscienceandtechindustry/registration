@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Page() {
   const [data, setData] = useState("No result");
   const [user, setUser] = useState(null);
+  const [login1, setLogin1] = useState(false);
   const router = useRouter();
   const inputRef = useRef();
 
@@ -24,14 +25,21 @@ export default function Page() {
   function login(id) {
     axios.post("/api/login", { id: id }).then(({ data }) => {
       console.log(data);
+      if (data.login) {
+        setLogin1(data.login);
+      } else {
+        setLogin1(data.login);
+      }
       if (data.status) {
         setUser(data.user);
+      } else {
+        setUser(null);
       }
     });
   }
 
   return (
-    <div>
+    <div className="h-screen overflow-hidden">
       <HeadPoint />
       <input
         type="text"
@@ -47,18 +55,31 @@ export default function Page() {
             // Update the result in the state
             login(inputRef.current.value);
             inputRef.current.value = "";
-          }, 300), // Adjust the debounce delay as needed
+          }, 100), // Adjust the debounce delay as needed
           []
         )}
       />
 
       <div className="min-h-screen">
-        {user && (
+        {!login1 && user && (
           <>
-            <nav className="text-center text-2xl text-green-500">
-              Successful Login
+            <nav className="text-center text-2xl text-white text-bold text-3xl">
+              Welcome
             </nav>
-            <div>welcome, {user.fullName}</div>
+            <div className="text-center mt-10 text-2xl  ">
+              <span className="">{user.fullName}</span>
+            </div>
+          </>
+        )}
+
+        {login1 && user && (
+          <>
+            <nav className="text-center text-2xl text-white text-bold text-3xl">
+              you have already scan
+            </nav>
+            <div className="text-center mt-10 text-2xl  ">
+              <span className="">welcome, {user.fullName}</span>
+            </div>
           </>
         )}
       </div>

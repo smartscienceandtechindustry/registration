@@ -142,38 +142,52 @@ export function FormData({ setUser }) {
                   designation: designation.current.value,
                   company: company.current.value,
                 };
+                let counter = 0;
                 //let ucounter = 0; counter not needed, return upon error
                 if (user.fullName.length == 0) {
                   //enter username please
                   setFullNameStatus(true);
+                  counter++;
+                  return;
                 } else {
                   setFullNameStatus(false);
                 }
-                if (user.company.length == 0) {
-                  //username too short
-                  setCompanyStatus(true);
+
+                if (user.phoneNumber.length == 0) {
+                  setPhoneNumberStatus(true);
+                  counter++;
+                  //enter phone number please
+                  return;
                 } else {
-                  setCompanyStatus(false);
+                  setPhoneNumberStatus(false);
                 }
                 if (user.designation.length == 0) {
                   //username too long
                   setDesignationStatus(true);
+                  counter++;
+                  return;
                 } else {
                   setDesignationStatus(false);
                 }
-                if (user.phoneNumber.length == 0) {
-                  setPhoneNumberStatus(true);
-                  //enter phone number please
+
+                if (user.company.length == 0) {
+                  //username too short
+                  setCompanyStatus(true);
+                  counter++;
+                  return;
                 } else {
-                  setPhoneNumberStatus(false);
+                  setCompanyStatus(false);
                 }
-                axios.post("/api/register", user).then(({ data }) => {
-                  console.log(data.uid);
-                  setUser({
-                    ...user,
-                    uid: data.uid,
+
+                if (1) {
+                  axios.post("/api/register", user).then(({ data }) => {
+                    console.log(data.uid);
+                    setUser({
+                      ...user,
+                      uid: data.uid,
+                    });
                   });
-                });
+                }
               }}
             >
               Register

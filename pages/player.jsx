@@ -12,7 +12,7 @@ export default function Player() {
   return (
     <>
       <div>
-        <video src="/video.mp4" ref={videoRef}></video>
+        <video src="/video.mp4" ref={videoRef} preload="auto"></video>
       </div>
     </>
   );
