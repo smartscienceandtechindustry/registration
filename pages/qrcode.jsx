@@ -89,7 +89,7 @@ export default function Page() {
         {!user && (
           <nav
             className="text-center text-5xl text-white text-bold text-3xl"
-            style={{ transform: "scale(3)" }}
+            style={{ transform: "scale(1.5)" }}
           >
             Scan your invitation
           </nav>
