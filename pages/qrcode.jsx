@@ -32,6 +32,9 @@ export default function Page() {
       }
       if (data.status) {
         setUser(data.user);
+        setTimeout(() => {
+          setUser(null);
+        }, 5000);
       } else {
         setUser(null);
       }
@@ -75,7 +78,7 @@ export default function Page() {
         {login1 && user && (
           <>
             <nav className="text-center text-5xl text-white text-bold text-3xl">
-              you have already scan
+              you have already scanned
             </nav>
             <div className="text-center mt-10 text-5xl  ">
               <span className="">welcome, {user.fullName}</span>
